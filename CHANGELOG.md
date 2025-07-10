@@ -1,3 +1,7 @@
+# 2.1.2
+
+- fix: Fixed 'FileTypeValue' enum
+
 # 2.1.1
 
 - feat: Added support for controlling the close and insert button visibility states
