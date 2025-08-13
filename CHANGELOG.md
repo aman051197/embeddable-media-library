@@ -24,4 +24,4 @@
 
 # 1.0.4
 
-- fix: Enabled popups for Google login.
+- Fix: Allow popups for google login
