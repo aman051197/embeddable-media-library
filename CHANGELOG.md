@@ -1,3 +1,7 @@
+# 2.2.1
+- Added 'loginViaSSO' and 'widgetImagekitId' parameters to plugin options.
+- Included the `samples/saml-auth` project for testing purposes.
+
 # 2.1.1
 
 - feat: Added support for controlling the close and insert button visibility states
@@ -15,4 +19,4 @@
 
 # 1.0.4
 
-- Fix: Allow popups for google login
+- fix: Enabled popups for Google login.

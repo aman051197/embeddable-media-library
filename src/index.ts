@@ -176,17 +176,32 @@ export class ImagekitMediaLibraryWidget {
             this.postMessageOnLoad(iframe, this.options, this.IK_HOST);
         }
     }
-
     private generateInitialUrl(): string {
-        if (this.options?.mlSettings?.initialView) {
-            // check if key exists in InitialViewParameterEnum
-            const key = Object.keys(this.options.mlSettings.initialView)[0];
-            if (Object.values(InitialViewParameterEnum).includes(key as InitialViewParameterEnum)) {
-                return `${this.IK_HOST}/media-library-widget?redirectTo=media-library-widget&isMediaLibraryWidget=true&widgetHost=${this.widgetHost}&mlWidgetInitialView=${btoa(JSON.stringify(this.options.mlSettings.initialView))}`;
-            }
+        const url = new URL(`${this.IK_HOST}/media-library-widget`);
+        // always include these
+        url.searchParams.set('redirectTo', 'media-library-widget');
+        url.searchParams.set('isMediaLibraryWidget', 'true');
+        url.searchParams.set('widgetHost', this.widgetHost);
+
+        // if SSO is requested, pass it through
+        if (this.options.loginViaSSO) {
+            url.searchParams.set('loginViaSSO', 'true');
         }
-        return `${this.IK_HOST}/media-library-widget?redirectTo=media-library-widget&isMediaLibraryWidget=true&widgetHost=${this.widgetHost}`;
+        if (this.options.widgetImagekitId) {
+            url.searchParams.set('widgetImagekitId', this.options.widgetImagekitId);
+        }
+
+        // optional initial‐view
+        if (this.options.mlSettings?.initialView) {
+            url.searchParams.set(
+                'mlWidgetInitialView',
+                btoa(JSON.stringify(this.options.mlSettings.initialView))
+            );
+        }
+
+        return url.toString();
     }
+
 
     private postMessageOnLoad(iframe: HTMLIFrameElement, options: MediaLibraryWidgetOptionsExtended, IK_HOST: string) {
         iframe.onload = function () {

@@ -43,6 +43,8 @@ export interface MediaLibraryWidgetOptions {
   view?: 'modal' | 'inline';
   renderOpenButton?: boolean;
   mlSettings?: MLSettings;
+  loginViaSSO?: boolean;
+  widgetImagekitId?: string;
 }
 export interface MediaLibraryWidgetOptionsExtended extends MediaLibraryWidgetOptions {
   containerDimensions?: {
