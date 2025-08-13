@@ -67,8 +67,8 @@ export enum InitialViewParameterEnum {
 }
 
 export enum FileTypeValue {
-  IMAGE = 'image',
-  VIDEO = 'video',
+  IMAGE = 'images',
+  VIDEO = 'videos',
   CSSJS = 'cssJs',
   OTHERS = 'others'
 }

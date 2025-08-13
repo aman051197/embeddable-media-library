@@ -94,9 +94,9 @@ var config = {
          // pass empty object to open Media Collections page
          id: "<collection-id>" // open specific Media Collection
       },
-      fileType: "image" | "video" | "cssJs" | "others"
+      fileType: "images" | "videos" | "cssJs" | "others"
     },
-    multiple: true // false | true (default)
+    multiple: true // false | true (default),
     maxFiles: 20 // relevant when `multiple` is true
     toolbar: {
       // sets the visibility of the toolbar buttons

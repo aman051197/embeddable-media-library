@@ -1,6 +1,11 @@
-# 2.2.1
+# 2.2.0
+
 - Added 'loginViaSSO' and 'widgetImagekitId' parameters to plugin options.
 - Included the `samples/saml-auth` project for testing purposes.
+
+# 2.1.2
+
+- fix: Fixed 'FileTypeValue' enum
 
 # 2.1.1
 
