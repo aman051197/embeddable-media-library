@@ -31,6 +31,7 @@ export interface MLSettings {
   multiple?: boolean;
   maxFiles?: number;
   toolbar?: ToolbarOptions;
+  queryParams?: Record<string, string | number | boolean>;
 }
 
 export interface MediaLibraryWidgetOptions {

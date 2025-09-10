@@ -178,14 +178,29 @@ export class ImagekitMediaLibraryWidget {
     }
 
     private generateInitialUrl(): string {
+        const baseUrl = `${this.IK_HOST}/media-library-widget`;
+        const params = new URLSearchParams({
+            redirectTo: 'media-library-widget',
+            isMediaLibraryWidget: 'true',
+            widgetHost: this.widgetHost
+        });
+
+        // Add initial view parameters if they exist
         if (this.options?.mlSettings?.initialView) {
-            // check if key exists in InitialViewParameterEnum
             const key = Object.keys(this.options.mlSettings.initialView)[0];
             if (Object.values(InitialViewParameterEnum).includes(key as InitialViewParameterEnum)) {
-                return `${this.IK_HOST}/media-library-widget?redirectTo=media-library-widget&isMediaLibraryWidget=true&widgetHost=${this.widgetHost}&mlWidgetInitialView=${btoa(JSON.stringify(this.options.mlSettings.initialView))}`;
+                params.append('mlWidgetInitialView', btoa(JSON.stringify(this.options.mlSettings.initialView)));
             }
         }
-        return `${this.IK_HOST}/media-library-widget?redirectTo=media-library-widget&isMediaLibraryWidget=true&widgetHost=${this.widgetHost}`;
+
+        // Add custom query parameters if they exist
+        if (this.options?.mlSettings?.queryParams) {
+            Object.entries(this.options.mlSettings.queryParams).forEach(([key, value]) => {
+                params.append(key, String(value));
+            });
+        }
+
+        return `${baseUrl}?${params.toString()}`;
     }
 
     private postMessageOnLoad(iframe: HTMLIFrameElement, options: MediaLibraryWidgetOptionsExtended, IK_HOST: string) {
