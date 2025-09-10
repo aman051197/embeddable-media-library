@@ -103,6 +103,13 @@ var config = {
       // defaults to true for all buttons
       showCloseButton: false,
       showInsertButton: false
+    },
+    queryParams: {
+      // Add custom query parameters to the Media Library widget URL
+      // These will be appended to the final URL as query parameters
+      customParam1: "value1",
+      customParam2: 123,
+      customParam3: true
     }
   }
   */

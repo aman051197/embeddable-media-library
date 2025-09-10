@@ -1,3 +1,9 @@
+# 2.2.0
+
+- feat: Added support for custom query parameters via `queryParams` option in `mlSettings`
+- improvement: Refactored URL generation to use URLSearchParams for better parameter handling
+- docs: Added example in docs
+
 # 2.1.2
 
 - fix: Fixed 'FileTypeValue' enum
