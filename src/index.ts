@@ -177,29 +177,39 @@ export class ImagekitMediaLibraryWidget {
         }
     }
     private generateInitialUrl(): string {
-        const url = new URL(`${this.IK_HOST}/media-library-widget`);
-        // always include these
-        url.searchParams.set('redirectTo', 'media-library-widget');
-        url.searchParams.set('isMediaLibraryWidget', 'true');
-        url.searchParams.set('widgetHost', this.widgetHost);
+        const baseUrl = `${this.IK_HOST}/media-library-widget`;
+        const params = new URLSearchParams({
+            redirectTo: 'media-library-widget',
+            isMediaLibraryWidget: 'true',
+            widgetHost: this.widgetHost
+        });
 
-        // if SSO is requested, pass it through
-        if (this.options.loginViaSSO) {
-            url.searchParams.set('loginViaSSO', 'true');
-        }
-        if (this.options.widgetImagekitId) {
-            url.searchParams.set('widgetImagekitId', this.options.widgetImagekitId);
-        }
-
-        // optional initial‐view
-        if (this.options.mlSettings?.initialView) {
-            url.searchParams.set(
-                'mlWidgetInitialView',
-                btoa(JSON.stringify(this.options.mlSettings.initialView))
-            );
+        // Add initial view parameters if they exist
+        if (this.options?.mlSettings?.initialView) {
+            const key = Object.keys(this.options.mlSettings.initialView)[0];
+            if (Object.values(InitialViewParameterEnum).includes(key as InitialViewParameterEnum)) {
+                params.append('mlWidgetInitialView', btoa(JSON.stringify(this.options.mlSettings.initialView)));
+            }
         }
 
-        return url.toString();
+        // Add custom query parameters if they exist
+        if (this.options?.mlSettings?.queryParams) {
+            Object.entries(this.options.mlSettings.queryParams).forEach(([key, value]) => {
+                params.append(key, String(value));
+            });
+        }
+
+        // Add loginViaSSO if it exists
+        if (this.options?.mlSettings?.loginViaSSO) {
+            params.append('loginViaSSO', 'true');
+        }
+
+        // Add widgetImagekitId if it exists
+        if (this.options?.mlSettings?.widgetImagekitId) {
+            params.append('widgetImagekitId', this.options.mlSettings.widgetImagekitId);
+        }
+
+        return `${baseUrl}?${params.toString()}`;
     }
 
 

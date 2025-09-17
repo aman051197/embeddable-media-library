@@ -31,6 +31,9 @@ export interface MLSettings {
   multiple?: boolean;
   maxFiles?: number;
   toolbar?: ToolbarOptions;
+  queryParams?: Record<string, string | number | boolean>;
+  loginViaSSO?: boolean;
+  widgetImagekitId?: string;
 }
 
 export interface MediaLibraryWidgetOptions {
@@ -43,8 +46,6 @@ export interface MediaLibraryWidgetOptions {
   view?: 'modal' | 'inline';
   renderOpenButton?: boolean;
   mlSettings?: MLSettings;
-  loginViaSSO?: boolean;
-  widgetImagekitId?: string;
 }
 export interface MediaLibraryWidgetOptionsExtended extends MediaLibraryWidgetOptions {
   containerDimensions?: {

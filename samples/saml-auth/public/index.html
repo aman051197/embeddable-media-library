@@ -19,8 +19,10 @@
       dimensions: { height: '100%', width: '100%' },
       view: 'modal',
       renderOpenButton: true,
-      widgetImagekitId: 'your_imagekit_id', // Replace with your ImageKit ID
-      loginViaSSO: true
+      mlSettings: {
+        widgetImagekitId: 'your_imagekit_id', // Replace with your ImageKit ID
+        loginViaSSO: true
+      }
     };
     var mediaLibraryWidget = new IKMediaLibraryWidget(pluginOptions, payload => {
       console.log(payload);

@@ -103,7 +103,16 @@ var config = {
       // defaults to true for all buttons
       showCloseButton: false,
       showInsertButton: false
-    }
+    },
+    queryParams: {
+      // Add custom query parameters to the Media Library widget URL
+      // These will be appended to the final URL as query parameters
+      customParam1: "value1",
+      customParam2: 123,
+      customParam3: true
+    },
+    loginViaSSO: true, // to automatically initiate Single Sign-On (SSO) login by default
+    widgetImagekitId: "<your-imagekit-id>" // the ImageKit ID used to authenticate and open the Media Library
   }
   */
 };
