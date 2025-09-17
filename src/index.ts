@@ -6,7 +6,7 @@ import {
 } from './interfaces/index';
 
 export class ImagekitMediaLibraryWidget {
-    private IK_HOST: string = 'https://eml.imagekit.io';
+    private IK_HOST: string = 'https://stage1-eml.imagekit.io';
     private IK_FRAME_TITLE: string = 'ImageKit Embedded Media Library';
     private callbackFunction: MediaLibraryWidgetCallback;
     private widgetHost: string;
@@ -176,6 +176,7 @@ export class ImagekitMediaLibraryWidget {
             this.postMessageOnLoad(iframe, this.options, this.IK_HOST);
         }
     }
+
     private generateInitialUrl(): string {
         const baseUrl = `${this.IK_HOST}/media-library-widget`;
         const params = new URLSearchParams({
@@ -211,7 +212,6 @@ export class ImagekitMediaLibraryWidget {
 
         return `${baseUrl}?${params.toString()}`;
     }
-
 
     private postMessageOnLoad(iframe: HTMLIFrameElement, options: MediaLibraryWidgetOptionsExtended, IK_HOST: string) {
         iframe.onload = function () {
