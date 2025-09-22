@@ -6,7 +6,7 @@ import {
 } from './interfaces/index';
 
 export class ImagekitMediaLibraryWidget {
-    private IK_HOST: string = 'https://stage1-eml.imagekit.io';
+    private IK_HOST: string = 'https://eml.imagekit.io';
     private IK_FRAME_TITLE: string = 'ImageKit Embedded Media Library';
     private callbackFunction: MediaLibraryWidgetCallback;
     private widgetHost: string;
