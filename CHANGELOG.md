@@ -1,3 +1,9 @@
+# 2.3.0
+
+- feat: Added `loginViaSSO` and `widgetImagekitId` parameters in `mlSettings`.
+- chore: Included the `samples/saml-auth` project for testing purposes.
+- docs: Added example in docs
+
 # 2.2.0
 
 - feat: Added support for custom query parameters via `queryParams` option in `mlSettings`

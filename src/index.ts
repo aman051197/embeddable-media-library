@@ -200,6 +200,16 @@ export class ImagekitMediaLibraryWidget {
             });
         }
 
+        // Add loginViaSSO if it exists
+        if (this.options?.mlSettings?.loginViaSSO) {
+            params.append('loginViaSSO', 'true');
+        }
+
+        // Add widgetImagekitId if it exists
+        if (this.options?.mlSettings?.widgetImagekitId) {
+            params.append('widgetImagekitId', this.options.mlSettings.widgetImagekitId);
+        }
+
         return `${baseUrl}?${params.toString()}`;
     }
 

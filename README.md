@@ -110,7 +110,9 @@ var config = {
       customParam1: "value1",
       customParam2: 123,
       customParam3: true
-    }
+    },
+    loginViaSSO: true, // to automatically initiate Single Sign-On (SSO) login by default
+    widgetImagekitId: "<your-imagekit-id>" // the ImageKit ID used to authenticate and open the Media Library
   }
   */
 };

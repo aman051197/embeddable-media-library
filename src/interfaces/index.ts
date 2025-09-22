@@ -32,6 +32,8 @@ export interface MLSettings {
   maxFiles?: number;
   toolbar?: ToolbarOptions;
   queryParams?: Record<string, string | number | boolean>;
+  loginViaSSO?: boolean;
+  widgetImagekitId?: string;
 }
 
 export interface MediaLibraryWidgetOptions {
